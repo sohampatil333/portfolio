@@ -26,7 +26,9 @@ import {
   FileSpreadsheet,
   Zap,
   Search,
-  Target
+  Target,
+  BookOpen, // Added for Blog section
+  ArrowRight
 } from 'lucide-react';
 
 // --- Data Configuration ---
@@ -37,7 +39,7 @@ const profileData = {
   phone: "+91-9302552960",
   email: "patilsoham0303@gmail.com",
   summary: "Translating complex datasets into actionable business strategies. As an MBA scholar in Business Analytics, I bridge the gap between raw data and executive decision-making using SQL, Python, and Advanced Visualization.",
-  profileImage: "https://i.ibb.co/CKwN7wn3/Gemini-Generated-Image-1uyih21uyih21uyi.jpg",
+  profileImage: "https://i.ibb.co/4wdKdT5n/Gemini-Generated-Image-1uyih21uyih21uyi.jpg",
   links: {
     linkedin: "https://www.linkedin.com/in/sohampatil333/",
     github: "https://github.com/sohampatil333",
@@ -209,6 +211,99 @@ const projects = [
   }
 ];
 
+// Sample Blog Data
+const blogs = [
+  {
+    title: "Preparing for Placements: Building Interview and Professional Readiness",
+    excerpt: "As part of my MBA in Business Analytics at Medi-Caps University, I participated in a structured placement training program focused on interview preparation, resume building, and professional communication.",
+    content: `As part of my MBA in Business Analytics at Medi-Caps University, I participated in a structured placement training program focused on interview preparation, resume building, and professional communication.
+
+This training helped me understand what recruiters actually look for beyond academic knowledge. We worked on refining resumes, structuring self-introductions, and answering interview questions with clarity and confidence. The sessions also emphasized the importance of body language, communication skills, and logical thinking during interviews.
+
+One of the key learnings from this training was how to present my analytics skills in a business-oriented manner. Instead of only talking about tools, I learned how to explain my projects, learning outcomes, and problem-solving approach in a way that aligns with industry expectations.
+
+Interacting with peers during mock discussions and practice sessions also helped me identify areas of improvement and gain confidence. This experience made me more aware of how preparation, clarity, and continuous improvement play a crucial role in placement success.
+
+Overall, this placement training strengthened my readiness for interviews and helped me approach the recruitment process with a more structured and professional mindset.`,
+    date: "Jan 2026",
+    readTime: "4 min read",
+    tags: ["Placement Prep", "Soft Skills", "Career"],
+    image: "https://i.ibb.co/VchyYZ05/1767976809867.jpg",
+    imgPosition: "object-center"
+  },
+  {
+    title: "Improving My Data Presentation and Storytelling Skills",
+    excerpt: "As part of my MBA in Business Analytics at Medi-Caps University, I have been consciously working on improving my data presentation and communication skills alongside technical learning.",
+    content: `As part of my MBA in Business Analytics at Medi-Caps University, I have been consciously working on improving my data presentation and communication skills alongside technical learning.
+
+While building dashboards and analyzing data is important, I realized that insights create value only when they are communicated clearly. This presentation was part of my effort to explain Excel-based analysis using charts, comparisons, and structured insights in a simple and understandable manner.
+
+During this session, I focused on explaining what the data shows, why certain patterns matter, and how these insights can support business decisions. Presenting in front of peers helped me improve my confidence, clarity, and ability to answer questions logically.
+
+This experience taught me that a business analyst’s role is not limited to working behind the screen. Effective storytelling, clear explanations, and structured thinking are equally important to ensure that data-driven insights are understood by stakeholders.
+
+Working on such presentations has helped me become more confident in combining analytics with communication, which I consider a key skill for real-world business analytics roles.`,
+    date: "Sep 2025",
+    readTime: "3 min read",
+    tags: ["Soft Skills", "Presentation", "Data Storytelling"],
+    image: "https://i.ibb.co/sJgdfHwd/Gemini-Generated-Image-o1jnbdo1jnbdo1jn.jpg",
+    imgPosition: "object-center"
+  },
+  {
+    title: "Completing My First Structured Training in Data Analytics",
+    excerpt: "As part of my MBA in Business Analytics, I successfully completed a structured training program in Data Analytics conducted by upGrad in collaboration with Medi-Caps University.",
+    content: `As part of my MBA in Business Analytics, I successfully completed a structured training program in Data Analytics conducted by upGrad in collaboration with Medi-Caps University.
+
+This program marked an important step in my analytics journey. It helped me move from basic theoretical understanding to practical exposure in tools and concepts such as Python, R, SQL, Excel, and data analysis fundamentals. Each module focused not only on learning tools but also on understanding how data is used to solve real business problems.
+
+During the training, I worked on practice-based exercises that strengthened my ability to clean data, analyze patterns, and interpret results with a business perspective. I also learned the importance of structured thinking, accuracy, and consistency while working with data.
+
+Receiving this certificate was more than just completing a course—it reflected my growing commitment to building a strong foundation in analytics. This experience increased my confidence and motivated me to further explore real-world projects, dashboards, and business use cases.
+
+This milestone remains a key part of my transition into a data-driven and analytical mindset.`,
+    date: "Aug 2025",
+    readTime: "3 min read",
+    tags: ["Certification", "upGrad", "Data Analytics"],
+    image: "https://i.ibb.co/BVZzpvRq/IMG-6366.jpg",
+    imgPosition: "object-center" // Aligns image to top to show face
+  },
+  {
+    title: "An Academic Exposure Visit to IIT Indore",
+    excerpt: "During my MBA in Business Analytics, I got the opportunity to visit Indian Institute of Technology Indore along with my batch as part of an academic exposure program.",
+    content: `During my MBA in Business Analytics, I got the opportunity to visit Indian Institute of Technology Indore along with my batch as part of an academic exposure program.
+
+This visit allowed me to experience an environment where research, innovation, and analytical thinking play a central role in education. Being on campus and observing the academic culture helped me understand how advanced institutions integrate technology, data, and structured research into real-world problem solving.
+
+The visit highlighted the importance of data-driven approaches, interdisciplinary learning, and continuous skill development. It made me realize that analytics is not limited to tools or dashboards, but also involves discipline, curiosity, and the ability to think critically about problems.
+
+This experience strengthened my motivation to pursue analytics with a more focused and structured mindset. It encouraged me to work on building strong foundations in data analysis, business understanding, and decision-making, which are essential for a career in Business Analytics.
+
+Looking back, this visit remains an important learning milestone that reinforced my interest in analytics and professional growth.`,
+    date: "Mar 2025",
+    readTime: "4 min read",
+    tags: ["Academic Visit", "IIT Indore", "Analytics"],
+    image: "https://i.ibb.co/kjS0gvZ/IMG-20250321-WA0053.jpg",
+    imgPosition: "object-center"
+  },
+  {
+    title: "The First Step into My Analytics Journey",
+    excerpt: "This photograph was taken on the day I officially joined Medi-Caps University to pursue my MBA in Business Analytics. At that moment, I had a clear intention...",
+    content: `This photograph was taken on the day I officially joined Medi-Caps University to pursue my MBA in Business Analytics.
+
+At that moment, I had a clear intention—to move beyond theoretical management concepts and develop a strong analytical mindset.
+Coming from a management background, I was curious about how data could influence real business decisions. Joining this program marked the beginning of my structured exposure to analytics, where I started learning how numbers, patterns, and insights work together to support strategy.
+
+During the initial phase, I was introduced to tools and concepts such as data analysis fundamentals, business problem framing, and analytical thinking. This transition helped me realize that analytics is not just about tools, but about asking the right questions and interpreting data meaningfully.
+
+This step laid the foundation for my journey into SQL, Excel, Power BI, and real-world analytics projects. Looking back, this moment represents the shift from being a student of management to becoming a learner of data-driven decision-making.`,
+    date: "Aug 2024",
+    readTime: "3 min read",
+    tags: ["MBA Journey", "Reflection", "Career"],
+    image: "https://i.ibb.co/ksjj1YWY/1724954985944-01.jpg",
+    imgPosition: "object-center"
+  }
+];
+
 // --- Decorative Components ---
 
 const BackgroundGrid = () => (
@@ -327,9 +422,10 @@ const Typewriter = ({ words, delay = 100, pause = 2000 }) => {
   );
 };
 
-export default function App() {
+export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState(null); // State for modal
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -339,6 +435,61 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0f1c] text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-hidden">
+      {/* Blog Modal Overlay */}
+      {selectedBlog && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setSelectedBlog(null)}>
+          <div 
+            className="bg-[#131b2e] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-2xl relative animate-in zoom-in-95 duration-200 custom-scrollbar" 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button 
+              onClick={() => setSelectedBlog(null)} 
+              className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-red-500/80 rounded-full text-white transition-colors z-20 backdrop-blur-md"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Modal Image */}
+            {selectedBlog.image && (
+               <div className="h-64 md:h-80 w-full relative">
+                  <img src={selectedBlog.image} alt={selectedBlog.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#131b2e] via-[#131b2e]/50 to-transparent"></div>
+               </div>
+            )}
+
+            {/* Modal Content */}
+            <div className={`p-8 md:p-12 ${!selectedBlog.image ? 'pt-16' : ''}`}>
+               <div className="flex flex-wrap gap-4 mb-6 text-sm">
+                  <span className="text-cyan-400 font-mono bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                     {selectedBlog.tags[0]}
+                  </span>
+                  <span className="text-slate-400 flex items-center">
+                     {selectedBlog.date}
+                  </span>
+                  <span className="text-slate-400 flex items-center">
+                     • {selectedBlog.readTime}
+                  </span>
+               </div>
+
+               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
+                  {selectedBlog.title}
+               </h2>
+
+               <div className="prose prose-invert prose-lg max-w-none text-slate-300">
+                  {selectedBlog.content.split('\n').map((paragraph, idx) => (
+                      paragraph.trim() !== "" && (
+                        <p key={idx} className="mb-6 leading-relaxed">
+                          {paragraph}
+                        </p>
+                      )
+                  ))}
+               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <BackgroundGrid />
       
       {/* Ambient Glows */}
@@ -363,7 +514,7 @@ export default function App() {
             <div className="hidden md:block">
               <div className="flex items-center space-x-8">
                 {/* Navigation links - Updated Order */}
-                {['About', 'Experience', 'Projects', 'Skills', 'Education'].map((item) => (
+                {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Blog'].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -391,7 +542,7 @@ export default function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-[#0a0f1c] border-b border-white/10 absolute w-full">
             <div className="px-4 py-4 space-y-2">
-              {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Contact'].map((item) => (
+              {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Blog', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -723,8 +874,8 @@ export default function App() {
                   <ul className="space-y-3 mb-8 flex-1">
                     {project.details.map((detail, i) => (
                       <li key={i} className="text-sm text-slate-400 flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 shrink-0"></span> 
-                          {detail}
+                         <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 shrink-0"></span> 
+                         {detail}
                       </li>
                     ))}
                   </ul>
@@ -834,8 +985,58 @@ export default function App() {
          </div>
       </section>
 
-      {/* 8. Contact Section */}
-      <section id="contact" className="py-24 relative overflow-hidden bg-[#0d1221]/50">
+      {/* 8. Blog Section */}
+      <section id="blog" className="py-24 bg-[#0d1221]/50 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader title="Analytics Journey" subtitle="Blog" icon={BookOpen} />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogs.map((blog, idx) => (
+               <FadeInSection key={idx} className="bg-[#131b2e] rounded-xl overflow-hidden border border-white/5 hover:border-cyan-500/30 transition-all group hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-900/10 flex flex-col h-full">
+                  {blog.image && (
+                    <div className="h-48 overflow-hidden relative">
+                       <img 
+                         src={blog.image} 
+                         alt={blog.title} 
+                         className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${blog.imgPosition || 'object-center'}`}
+                       />
+                       <div className="absolute inset-0 bg-gradient-to-t from-[#131b2e] to-transparent opacity-60"></div>
+                    </div>
+                  )}
+                  <div className="p-8 flex flex-col flex-grow">
+                     <div className="flex justify-between items-start mb-4">
+                        <span className="text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20">
+                           {blog.tags[0]}
+                        </span>
+                        <span className="text-xs text-slate-500 font-medium">{blog.date}</span>
+                     </div>
+                     
+                     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors line-clamp-2">
+                        {blog.title}
+                     </h3>
+                     
+                     <p className="text-slate-400 text-sm mb-6 leading-relaxed flex-grow line-clamp-3">
+                        {blog.excerpt}
+                     </p>
+                     
+                     <div className="border-t border-white/5 pt-4 flex items-center justify-between mt-auto">
+                        <span className="text-xs text-slate-500">{blog.readTime}</span>
+                        <button 
+                          onClick={() => setSelectedBlog(blog)}
+                          className="flex items-center gap-2 text-sm text-cyan-400 font-medium hover:text-white transition-colors group/link bg-transparent border-none cursor-pointer"
+                        >
+                           Read More <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform"/>
+                        </button>
+                     </div>
+                  </div>
+               </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Contact Section */}
+      <section id="contact" className="py-24 relative overflow-hidden bg-[#0a0f1c]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1c] to-[#060911]"></div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
