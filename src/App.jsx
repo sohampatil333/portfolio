@@ -27,7 +27,7 @@ import {
   Zap,
   Search,
   Target,
-  BookOpen, // Added for Blog section
+  BookOpen,
   ArrowRight
 } from 'lucide-react';
 
@@ -214,6 +214,26 @@ const projects = [
 // Sample Blog Data
 const blogs = [
   {
+    title: "Industrial Exposure at Dabur India Ltd",
+    excerpt: "As part of my MBA (Business Analytics) curriculum, I visited Dabur India Ltd on 23 Jan 2026 to understand FMCG operations, manufacturing standards, and corporate culture.",
+    content: `As part of my MBA (Business Analytics) curriculum, I had the opportunity to visit Dabur India Ltd on 23 January 2026. This industrial visit was organized to help us understand how large FMCG organizations function in real-world settings and how classroom concepts are applied on the shop floor.
+
+The journey began from our college campus, from where we departed by bus to the Dabur manufacturing unit. Upon arrival, we were guided to the meeting room, where the visit formally started. The company team welcomed us warmly and arranged refreshments, including snacks and Dabur products such as fruit juice and Hajmola, which created a comfortable and engaging environment for the session ahead.
+
+The introductory session was conducted by Mr. Kumar Niraj, Unit HR Head, who shared insights into Dabur’s organizational values, employee culture, manufacturing standards, and the company’s strong commitment to quality, safety, and Ayurveda-based products. His explanation helped us understand how a legacy FMCG brand maintains consistency and trust at a large scale.
+
+After the introduction, we were taken to the Hajmola production unit, where a company representative explained the complete production workflow. We observed automated packaging machines, quality control processes, hygiene standards, and safety practices followed on the shop floor. Seeing these processes in action helped us understand how efficiency and precision are maintained in large-scale manufacturing operations.
+
+One of the most valuable aspects of the visit was interacting with senior professionals, including Mr. Ashish Dixit (Unit Head), Mr. Kumar Niraj (Unit HR Head), and Mr. Naresh Kumar Chadar (Senior Executive – CSR). They shared practical insights into operational management, human resource practices, corporate social responsibility initiatives, and what the industry expects from management graduates entering the corporate world.
+
+After completing the plant visit and discussions, photographs were taken as permitted, and we returned to the college campus. Overall, the visit was a meaningful learning experience that bridged the gap between theory and practice. It strengthened my understanding of FMCG operations, corporate culture, and the importance of quality and safety in manufacturing, making it a valuable part of my academic and professional journey.`,
+    date: "Jan 2026",
+    readTime: "5 min read",
+    tags: ["Industrial Visit", "FMCG", "Corporate Exposure"],
+    image: "https://i.ibb.co/jvNSTDWH/IMG-20260123-WA0078.jpg",
+    imgPosition: "object-center"
+  },
+  {
     title: "Preparing for Placements: Building Interview and Professional Readiness",
     excerpt: "As part of my MBA in Business Analytics at Medi-Caps University, I participated in a structured placement training program focused on interview preparation, resume building, and professional communication.",
     content: `As part of my MBA in Business Analytics at Medi-Caps University, I participated in a structured placement training program focused on interview preparation, resume building, and professional communication.
@@ -225,7 +245,7 @@ One of the key learnings from this training was how to present my analytics skil
 Interacting with peers during mock discussions and practice sessions also helped me identify areas of improvement and gain confidence. This experience made me more aware of how preparation, clarity, and continuous improvement play a crucial role in placement success.
 
 Overall, this placement training strengthened my readiness for interviews and helped me approach the recruitment process with a more structured and professional mindset.`,
-    date: "Jan 2026",
+    date: "Nov 2025",
     readTime: "4 min read",
     tags: ["Placement Prep", "Soft Skills", "Career"],
     image: "https://i.ibb.co/VchyYZ05/1767976809867.jpg",
@@ -243,7 +263,7 @@ During this session, I focused on explaining what the data shows, why certain pa
 This experience taught me that a business analyst’s role is not limited to working behind the screen. Effective storytelling, clear explanations, and structured thinking are equally important to ensure that data-driven insights are understood by stakeholders.
 
 Working on such presentations has helped me become more confident in combining analytics with communication, which I consider a key skill for real-world business analytics roles.`,
-    date: "Sep 2025",
+    date: "Oct 2025",
     readTime: "3 min read",
     tags: ["Soft Skills", "Presentation", "Data Storytelling"],
     image: "https://i.ibb.co/sJgdfHwd/Gemini-Generated-Image-o1jnbdo1jnbdo1jn.jpg",
@@ -265,7 +285,7 @@ This milestone remains a key part of my transition into a data-driven and analyt
     readTime: "3 min read",
     tags: ["Certification", "upGrad", "Data Analytics"],
     image: "https://i.ibb.co/BVZzpvRq/IMG-6366.jpg",
-    imgPosition: "object-center" // Aligns image to top to show face
+    imgPosition: "object-center" 
   },
   {
     title: "An Academic Exposure Visit to IIT Indore",
@@ -304,7 +324,17 @@ This step laid the foundation for my journey into SQL, Excel, Power BI, and real
   }
 ];
 
-// --- Decorative Components ---
+const certifications = [
+  "Introduction to MS Excel",
+  "Business Analysis Basics",
+  "TCS iON Career Edge – Young Professional",
+  "Introduction to Generative AI",
+  "Essential Tools for Data Analytics",
+  "ChatGPT for Data Analytics",
+  "Study on Customer Churn Analytics (SQL)"
+];
+
+// --- Helper Components ---
 
 const BackgroundGrid = () => (
   <div className="absolute inset-0 pointer-events-none z-0">
@@ -313,27 +343,6 @@ const BackgroundGrid = () => (
     <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0f1c] to-transparent"></div>
   </div>
 );
-
-// --- Logic Components ---
-
-const useOnScreen = (options) => {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-      }
-    }, options);
-
-    if (ref.current) observer.observe(ref.current);
-    return () => ref.current && observer.unobserve(ref.current);
-  }, [ref, options]);
-
-  return [ref, isVisible];
-};
 
 const SectionHeader = ({ title, icon: Icon, subtitle }) => (
   <div className="mb-12 relative z-10">
@@ -352,10 +361,46 @@ const SectionHeader = ({ title, icon: Icon, subtitle }) => (
   </div>
 );
 
-const AnimatedBar = ({ name, level }) => {
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
+const FadeInSection = ({ children, className }) => {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    if (ref.current) observer.observe(ref.current);
+    return () => ref.current && observer.unobserve(ref.current);
+  }, []);
+
   return (
-    <div ref={ref} className="mb-5 group">
+    <div 
+      ref={ref} 
+      className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
+const AnimatedBar = ({ name, level }) => {
+  const [isVisible, setIsVisible] = useState(false); 
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if(entry.isIntersecting) setIsVisible(true);
+    }, { threshold: 0.1 });
+    if(divRef.current) observer.observe(divRef.current);
+    return () => divRef.current && observer.unobserve(divRef.current);
+  }, []);
+
+  return (
+    <div ref={divRef} className="mb-5 group">
       <div className="flex justify-between mb-2">
         <span className="text-sm font-semibold text-slate-300 group-hover:text-cyan-300 transition-colors">{name}</span>
         <span className="text-sm font-bold text-cyan-500">{level}%</span>
@@ -375,19 +420,6 @@ const AnimatedBar = ({ name, level }) => {
   );
 };
 
-const FadeInSection = ({ children, className }) => {
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-  return (
-    <div 
-      ref={ref} 
-      className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
-
-// --- Typewriter Component ---
 const Typewriter = ({ words, delay = 100, pause = 2000 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -396,7 +428,6 @@ const Typewriter = ({ words, delay = 100, pause = 2000 }) => {
   useEffect(() => {
     const handleTyping = () => {
       const fullText = words[currentWordIndex];
-      
       if (isDeleting) {
         setCurrentText(fullText.substring(0, currentText.length - 1));
       } else {
@@ -410,7 +441,6 @@ const Typewriter = ({ words, delay = 100, pause = 2000 }) => {
         setCurrentWordIndex((prev) => (prev + 1) % words.length);
       }
     };
-
     const timer = setTimeout(handleTyping, isDeleting ? delay / 2 : delay);
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, words, delay, pause, currentWordIndex]);
@@ -422,10 +452,12 @@ const Typewriter = ({ words, delay = 100, pause = 2000 }) => {
   );
 };
 
+// --- Main Application ---
+
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [selectedBlog, setSelectedBlog] = useState(null); // State for modal
+  const [selectedBlog, setSelectedBlog] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -438,52 +470,23 @@ export default function Portfolio() {
       {/* Blog Modal Overlay */}
       {selectedBlog && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setSelectedBlog(null)}>
-          <div 
-            className="bg-[#131b2e] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-2xl relative animate-in zoom-in-95 duration-200 custom-scrollbar" 
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button 
-              onClick={() => setSelectedBlog(null)} 
-              className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-red-500/80 rounded-full text-white transition-colors z-20 backdrop-blur-md"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Modal Image */}
+          <div className="bg-[#131b2e] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-2xl relative animate-in zoom-in-95 duration-200 custom-scrollbar" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setSelectedBlog(null)} className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-red-500/80 rounded-full text-white transition-colors z-20 backdrop-blur-md"><X size={24} /></button>
             {selectedBlog.image && (
                <div className="h-64 md:h-80 w-full relative">
                   <img src={selectedBlog.image} alt={selectedBlog.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#131b2e] via-[#131b2e]/50 to-transparent"></div>
                </div>
             )}
-
-            {/* Modal Content */}
             <div className={`p-8 md:p-12 ${!selectedBlog.image ? 'pt-16' : ''}`}>
                <div className="flex flex-wrap gap-4 mb-6 text-sm">
-                  <span className="text-cyan-400 font-mono bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                     {selectedBlog.tags[0]}
-                  </span>
-                  <span className="text-slate-400 flex items-center">
-                     {selectedBlog.date}
-                  </span>
-                  <span className="text-slate-400 flex items-center">
-                     • {selectedBlog.readTime}
-                  </span>
+                  <span className="text-cyan-400 font-mono bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">{selectedBlog.tags[0]}</span>
+                  <span className="text-slate-400 flex items-center">{selectedBlog.date}</span>
+                  <span className="text-slate-400 flex items-center">• {selectedBlog.readTime}</span>
                </div>
-
-               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
-                  {selectedBlog.title}
-               </h2>
-
+               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">{selectedBlog.title}</h2>
                <div className="prose prose-invert prose-lg max-w-none text-slate-300">
-                  {selectedBlog.content.split('\n').map((paragraph, idx) => (
-                      paragraph.trim() !== "" && (
-                        <p key={idx} className="mb-6 leading-relaxed">
-                          {paragraph}
-                        </p>
-                      )
-                  ))}
+                  {selectedBlog.content.split('\n').map((paragraph, idx) => paragraph.trim() !== "" && <p key={idx} className="mb-6 leading-relaxed">{paragraph}</p>)}
                </div>
             </div>
           </div>
@@ -491,8 +494,6 @@ export default function Portfolio() {
       )}
 
       <BackgroundGrid />
-      
-      {/* Ambient Glows */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -500,12 +501,11 @@ export default function Portfolio() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/90 backdrop-blur-xl border-b border-white/5 py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo links to Hero now */}
             <a href="#hero" className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all">
                 <BarChart3 className="text-white" size={24} />
               </div>
-              <div>
+              <div className="text-left">
                 <span className="font-bold text-xl text-white tracking-wider block leading-none">SOHAM PATIL</span>
                 <span className="text-[10px] text-cyan-400 uppercase tracking-[0.2em]">Analyst</span>
               </div>
@@ -513,7 +513,6 @@ export default function Portfolio() {
             
             <div className="hidden md:block">
               <div className="flex items-center space-x-8">
-                {/* Navigation links - Updated Order */}
                 {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Blog'].map((item) => (
                   <a
                     key={item}
@@ -540,9 +539,9 @@ export default function Portfolio() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-[#0a0f1c] border-b border-white/10 absolute w-full">
-            <div className="px-4 py-4 space-y-2">
-              {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Blog', 'Contact'].map((item) => (
+          <div className="md:hidden bg-[#0a0f1c] border-b border-white/10 absolute w-full top-16 left-0">
+            <div className="px-4 py-4 space-y-2 bg-[#0a0f1c]">
+              {['About', 'Experience', 'Projects', 'Skills', 'Education', 'Blog'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -598,21 +597,12 @@ export default function Portfolio() {
                   Download Resume
                 </a>
                 <div className="flex gap-3 justify-center sm:justify-start">
-                  {[
-                    { icon: Linkedin, link: profileData.links.linkedin },
-                    { icon: Github, link: profileData.links.github },
-                    { icon: Globe, link: profileData.links.portfolio }
-                  ].map((social, idx) => (
-                    <a 
-                      key={idx}
-                      href={social.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-[#131b2e] hover:bg-[#1c263d] rounded-xl border border-white/10 hover:border-cyan-500/50 text-slate-300 hover:text-white transition-all hover:scale-105"
-                    >
-                      <social.icon size={22} />
-                    </a>
-                  ))}
+                  {Object.keys(profileData.links).map((key) => {
+                     if(key === 'linkedin') return <a key={key} href={profileData.links[key]} target="_blank" rel="noreferrer" className="p-3 bg-[#131b2e] hover:bg-[#1c263d] rounded-xl border border-white/10 hover:border-cyan-500/50 text-slate-300 hover:text-white transition-all"><Linkedin size={22} /></a>;
+                     if(key === 'github') return <a key={key} href={profileData.links[key]} target="_blank" rel="noreferrer" className="p-3 bg-[#131b2e] hover:bg-[#1c263d] rounded-xl border border-white/10 hover:border-cyan-500/50 text-slate-300 hover:text-white transition-all"><Github size={22} /></a>;
+                     if(key === 'portfolio') return <a key={key} href={profileData.links[key]} target="_blank" rel="noreferrer" className="p-3 bg-[#131b2e] hover:bg-[#1c263d] rounded-xl border border-white/10 hover:border-cyan-500/50 text-slate-300 hover:text-white transition-all"><Globe size={22} /></a>;
+                     return null;
+                  })}
                 </div>
               </div>
             </FadeInSection>
@@ -965,15 +955,7 @@ export default function Portfolio() {
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader title="Certifications" subtitle="Continuous Learning" icon={Award} />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {[
-                  "Introduction to MS Excel",
-                  "Business Analysis Basics",
-                  "TCS iON Career Edge – Young Professional",
-                  "Introduction to Generative AI",
-                  "Essential Tools for Data Analytics",
-                  "ChatGPT for Data Analytics",
-                  "Study on Customer Churn Analytics (SQL)"
-               ].map((cert, idx) => (
+               {certifications.map((cert, idx) => (
                   <FadeInSection key={idx} className="flex items-start gap-4 bg-[#131b2e] p-6 rounded-xl border border-white/5 hover:border-cyan-500/50 hover:bg-[#1a233b] transition-all group cursor-default hover:shadow-lg hover:shadow-cyan-900/10 h-full">
                   <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-blue-500/10 rounded-lg text-cyan-400 group-hover:text-white transition-colors shrink-0">
                      <Award size={20} />
@@ -988,7 +970,7 @@ export default function Portfolio() {
       {/* 8. Blog Section */}
       <section id="blog" className="py-24 bg-[#0d1221]/50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title="Analytics Journey" subtitle="Blog" icon={BookOpen} />
+          <SectionHeader title="Insights & Thoughts" subtitle="Blog" icon={BookOpen} />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog, idx) => (
