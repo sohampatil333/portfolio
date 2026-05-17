@@ -1,0 +1,66 @@
+export const internships = [
+  {
+    role: "Data Analyst Intern",
+    company: "upGrad",
+    duration: "Jun 2025 – Aug 2025",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykcV8-hVIkwpxgPUDzC1aF8ei_bt7tA6zvA&s",
+    color: "from-red-500 to-orange-500",
+    description: [
+      "Completed a structured internship and training program focused on Python, R, SQL, Excel, and data analytics fundamentals.",
+      "Performed data cleaning, transformation, and exploratory analysis on structured datasets.",
+      "Created basic visualizations and reports to support data-driven insights.",
+      "Worked on practice-based business problem statements under mentor guidance.",
+      "Strengthened understanding of analytical thinking and business use cases.",
+    ],
+  },
+  {
+    role: "Business Analyst Intern",
+    company: "MentorMind",
+    duration: "Jun 2025 – Jul 2025",
+    logo: "https://mentormind-static-assets.s3.ap-south-1.amazonaws.com/mentormind_logo.png",
+    color: "from-blue-500 to-cyan-500",
+    description: [
+      "Worked on a Customer Churn Analysis project using a banking dataset of over 10,000 customer records.",
+      "Used SQL to analyze customer behavior and identify key churn drivers.",
+      "Interpreted results to suggest basic retention strategies based on data patterns.",
+      "Gained hands-on exposure to real-world business analytics workflow.",
+    ],
+  },
+  {
+    role: "Finance Intern",
+    company: "NEPA Limited",
+    duration: "Feb 2024",
+    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHS9e7ByAQoSA/company-logo_200_200/company-logo_200_200/0/1648623717629?e=2147483647&v=beta&t=f7MBd7AKP3g-LKTB9VyLj8vRDLuCI4mBYshj91D8lvA",
+    color: "from-green-500 to-emerald-500",
+    description: [
+      "Observed and supported finance department operations, including basic financial reporting and documentation.",
+      "Gained exposure to accounting procedures and commercial workflows in a large-scale organization.",
+      "Assisted in report preparation and internal documentation for commercial processes.",
+      "Developed understanding of how finance and commercial teams support business operations.",
+    ],
+  },
+  {
+    role: "Commercial Dept. Intern",
+    company: "NEPA Limited",
+    duration: "Jan 2023",
+    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHS9e7ByAQoSA/company-logo_200_200/company-logo_200_200/0/1648623717629?e=2147483647&v=beta&t=f7MBd7AKP3g-LKTB9VyLj8vRDLuCI4mBYshj91D8lvA",
+    color: "from-teal-500 to-cyan-600",
+    description: [
+      "Learned about commercial department processes and inter-department coordination.",
+      "Assisted with basic reporting and internal process documentation.",
+      "Observed how large organizations manage procurement and operational workflows.",
+    ],
+  },
+  {
+    role: "Sales & Marketing Intern",
+    company: "Yashraj Motors",
+    duration: "Mar 2022",
+    logo: "Y",
+    color: "from-purple-500 to-pink-500",
+    description: [
+      "Supported sales and marketing activities during a local promotional campaign.",
+      "Performed data entry and record management using Microsoft Excel.",
+      "Assisted in customer interaction and gained exposure to basic sales operations.",
+    ],
+  },
+];
